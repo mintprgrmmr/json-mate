@@ -1,0 +1,83 @@
+
+### Получить список задач
+GET http://127.0.0.1:8000/tasks
+Accept: application/json
+
+### Получить конкретную задачу (например, ID = 3)
+GET http://127.0.0.1:8000/tasks/3
+Accept: application/json
+
+### Создать новую задачу
+POST http://127.0.0.1:8000/tasks
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Новая задача",
+  "description": "Описание новой задачи",
+  "due_date": "2025-03-15T10:00:00",
+  "priority": "высокий",
+  "category": "Дом",
+  "is_completed": 1
+}
+
+### Обновить задачу (ID = 6)
+PUT http://127.0.0.1:8000/tasks/6
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Обновленная задача",
+  "description": "Обновленное описание",
+  "due_date": "2025-03-20T18:00:00",
+  "priority": "высокий",
+  "category": "Личное",
+  "is_completed": 1
+}
+
+### Удалить задачу (ID = 6)
+DELETE http://127.0.0.1:8000/tasks/6
+Accept: application/json
+
+### Удалить несколько задач (ID = 4, 7, 8)
+POST http://127.0.0.1:8000/tasks/delete-multiple
+Content-Type: application/json
+Accept: application/json
+
+{
+    "ids": [4, 7, 8]
+}
+
+### Поиск по названию "Первая задача"
+GET http://127.0.0.1:8000/tasks?search=Первая задача
+Accept: application/json
+
+### Сортировка по due_date (по возрастанию)
+GET http://127.0.0.1:8000/tasks?sort=due_date&direction=asc
+Accept: application/json
+
+### Сортировка по created_at (по убыванию)
+GET http://127.0.0.1:8000/tasks?sort=created_at&direction=desc
+Accept: application/json
+
+### Получить выполненные задачи
+GET http://127.0.0.1:8000/tasks?is_completed=1
+Accept: application/json
+
+### Получить задачи с высоким приоритетом
+GET http://127.0.0.1:8000/tasks?priority=высокий
+Accept: application/json
+
+### Получить задачи из категории "Работа"
+GET http://127.0.0.1:8000/tasks?category=Работа
+Accept: application/json
+
+### Получить задачи с сортировкой по `due_date`
+GET http://127.0.0.1:8000/tasks?sort=due_date&direction=desc
+Accept: application/json
+
+### Получить задачи с несколькими фильрами
+GET http://127.0.0.1:8000/tasks?priority=высокий&is_completed=1&category=Дом
+Accept: application/json
+
+
